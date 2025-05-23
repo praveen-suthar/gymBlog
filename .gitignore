@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+## 🛠️ Getting Started
+
+Follow these steps to run the project locally:- 
+
+```bash
+cd blog
+npm install
+npm run dev
