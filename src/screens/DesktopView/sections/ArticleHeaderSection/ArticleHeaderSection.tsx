@@ -19,7 +19,7 @@ export const ArticleHeaderSection = () => {
               <BreadcrumbItem>
                 <BreadcrumbLink
                   href="#"
-                  className="font-bold [font-family:'Lato',Helvetica]"
+                  className="font-bold [font-family:'Lato',Helvetica  hover:cursor-default hover:text-inherit hover:no-underline"
                 >
                   HOME
                 </BreadcrumbLink>
@@ -30,7 +30,7 @@ export const ArticleHeaderSection = () => {
               <BreadcrumbItem>
                 <BreadcrumbLink
                   href="#"
-                  className="[font-family:'Lato',Helvetica] tracking-[1px]"
+                  className="[font-family:'Lato',Helvetica] tracking-[1px]  hover:cursor-default hover:text-inherit hover:no-underline"
                 >
                   ARTICLES
                 </BreadcrumbLink>
@@ -53,7 +53,7 @@ export const ArticleHeaderSection = () => {
           layout="fill"
           objectFit="cover"
           priority
-          />
+        />
       </div>
     </>
   );
