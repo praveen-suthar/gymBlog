@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
 import Image from "next/image";
 
-export const RelatedArticlesSection = (): JSX.Element => {
+export const RelatedArticlesSection = () => {
   const articles = [
     {
       id: 1,

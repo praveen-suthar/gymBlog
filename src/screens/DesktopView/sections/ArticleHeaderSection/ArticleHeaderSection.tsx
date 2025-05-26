@@ -9,7 +9,7 @@ import {
   BreadcrumbSeparator,
 } from "../../../../components/ui/breadcrumb";
 
-export const ArticleHeaderSection = (): JSX.Element => {
+export const ArticleHeaderSection = () => {
   return (
     <>
       <section className="flex flex-col items-center justify-center gap-4 py-12 sm:py-14 md:py-16 w-full">

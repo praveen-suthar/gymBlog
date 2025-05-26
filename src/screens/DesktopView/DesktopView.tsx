@@ -3,7 +3,7 @@ import { ArticleHeaderSection } from "./sections/ArticleHeaderSection";
 import { ContentFrameSection } from "./sections/ContentFrameSection/ContentFrameSection";
 import { RelatedArticlesSection } from "./sections/RelatedArticlesSection/RelatedArticlesSection";
 
-export const DesktopView = (): JSX.Element => {
+export const DesktopView = () => {
   return (
     <main>
       {/* Article Header Section */}

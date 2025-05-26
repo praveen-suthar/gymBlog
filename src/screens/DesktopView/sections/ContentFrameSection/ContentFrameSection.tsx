@@ -112,7 +112,7 @@ const RatingStars = ({ rating }: { rating: number }) => {
   );
 };
 
-export const ContentFrameSection = (): JSX.Element => {
+export const ContentFrameSection = () => {
  
   const [formData, setFormData] = useState({
     name: "",
