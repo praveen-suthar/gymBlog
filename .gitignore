@@ -42,9 +42,23 @@ next-env.d.ts
 
 ## 🛠️ Getting Started
 
+
 Follow these steps to run the project locally:- 
 
 ```bash
 cd blog
 npm install
 npm run dev
+
+# Improvements suggestion. 
+# 1. Please make responsive as figma - Destop view, Tablet view and mobile view. 
+# 2. Also font family should be same or white space according to figma focus on it. 
+# 3. Add A Comment form should be woking with dummy json data, create a dummy json data on frontend side,
+# Comments should be visible on Comments section. 
+# When user send comment should be show don't need to store data on localstore we don't need to persist data just need to functionality working. 
+# 4. Header Home don't need hover functionality and  use / instead of >
+
+
+# 1. Niche diye gye code me hame form dynamic karna h or phir commnet map karwani h. 
+# 2. Ham isme dummy JSON ka use kar sakte h frontend side me.
+# 3. Jab user send button pe click kare ko comment add hoke comment ki list me aa jani chaiye or UI side visible ho jani chaiye. 

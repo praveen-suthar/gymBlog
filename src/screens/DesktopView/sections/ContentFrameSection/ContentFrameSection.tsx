@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
   Avatar,
   AvatarFallback,
@@ -111,6 +113,37 @@ const RatingStars = ({ rating }: { rating: number }) => {
 };
 
 export const ContentFrameSection = (): JSX.Element => {
+ 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    comment: "",
+  });
+
+  const [commentList, setCommentList] = useState(comments);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = () => {
+    if (!formData.name || !formData.email || !formData.comment) return;
+
+    const newComment = {
+      id: commentList.length + 1,
+      name: formData.name,
+      image: "/images/rectangle-2-copy-8-2.png", // Dummy image
+      rating: 4.0, // Static rating
+      date: new Date().toLocaleDateString("en-GB"), // e.g., 26/05/2025
+      comment: formData.comment,
+    };
+
+    setCommentList([newComment, ...commentList]);
+    setFormData({ name: "", email: "", comment: "" });
+  };
+
   return (
     <section className="flex flex-col items-center w-full px-4 md:px-0">
       <div className="flex flex-col lg:flex-row w-full max-w-[1200px] items-start gap-5">
@@ -320,7 +353,7 @@ export const ContentFrameSection = (): JSX.Element => {
           </div>
         </div>
 
-        {/* Sidebar */}
+         {/* Sidebar */}
         <aside className="flex flex-col w-full lg:w-[341px] items-start gap-[100px] px-5 py-6">
           <div className="flex flex-col items-start gap-[100px] w-full">
             {/* Explore More Section */}
@@ -432,7 +465,7 @@ export const ContentFrameSection = (): JSX.Element => {
           </h2>
         </div>
 
-        {comments.map((comment, index) => (
+        {commentList.map((comment, index) => (
           <React.Fragment key={comment.id}>
             <div className="w-full">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-5 w-full">
@@ -461,7 +494,7 @@ export const ContentFrameSection = (): JSX.Element => {
                 </div>
               </div>
             </div>
-            {index < comments.length - 1 && <Separator />}
+            {index < commentList.length - 1 && <Separator />}
           </React.Fragment>
         ))}
       </div>
@@ -477,26 +510,46 @@ export const ContentFrameSection = (): JSX.Element => {
         <div className="flex flex-col items-start gap-5 w-full">
           <div className="flex flex-col md:flex-row items-start gap-[25px] w-full">
             <div className="flex-1 flex flex-col items-start gap-5">
-                      <div className="w-full">
-                        <label className="font-medium text-[#3d3232] text-base tracking-[1.00px] mb-[34px] block">
-                          Name
-                        </label>
-                        <Input className="h-12 bg-neutral-100 rounded-xl" />
-                      </div>
-                      <div className="w-full">
-                        <label className="font-medium text-[#3d3232] text-base tracking-[1.00px] mb-[34px] block">
-                          Email
-                        </label>
-                        <Input className="h-12 bg-neutral-100 rounded-xl" />
-                      </div>
-                    </div>
+              <div className="w-full">
+                <label className="font-medium text-[#3d3232] text-base tracking-[1.00px] mb-[34px] block">
+                  Name
+                </label>
+                {/* <Input className="h-12 bg-neutral-100 rounded-xl" /> */}
+                <Input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="h-12 bg-neutral-100 rounded-xl text-black  border-none focus:outline-none"
+                />
+              </div>
+              <div className="w-full">
+                <label className="font-medium text-[#3d3232] text-base tracking-[1.00px] mb-[34px] block">
+                  Email
+                </label>
+                {/* <Input className="h-12 bg-neutral-100 rounded-xl" /> */}
+
+                <Input
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="h-12 bg-neutral-100 rounded-xl text-black  border-none focus:outline-none"
+                />
+              </div>
+            </div>
             <div className="flex flex-col h-[184px] items-start gap-[15px] flex-1">
               <label className="[font-family:'Lato',Helvetica] font-medium text-[#3d3232] text-base tracking-[1.00px]">
                 Comment
               </label>
-              <Textarea
+              {/* <Textarea
                 className="flex-1 w-full bg-neutral-100 rounded-[10px] px-6 py-[22px]"
                 placeholder="Search Anything..."
+              /> */}
+              <Textarea
+                name="comment"
+                value={formData.comment}
+                onChange={handleChange}
+                className="flex-1 w-full bg-neutral-100 rounded-[10px] px-6 py-[22px] text-black  border-none focus:outline-none"
+                placeholder="Write your comment..."
               />
             </div>
           </div>
@@ -538,7 +591,10 @@ export const ContentFrameSection = (): JSX.Element => {
                 </Button>
               </div>
             </div>
-            <Button className="w-[109px] h-12 bg-black rounded-xl flex items-center justify-center gap-2">
+            <Button
+              className="w-[109px] h-12 bg-black rounded-xl flex items-center justify-center gap-2"
+              onClick={handleSubmit}
+            >
               <span className="w-4 h-4 flex items-center justify-center text-white text-sm">
                 💬
               </span>
