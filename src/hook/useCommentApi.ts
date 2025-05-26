@@ -6,7 +6,7 @@ interface Comment {
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Comment } from "../types/Comment";
+
 
 const API_URL = "http://localhost:3001/comments";
 
