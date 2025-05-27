@@ -17,5 +17,3 @@ export const DesktopView = () => {
     </main>
   );
 };
-
-// className="flex flex-col w-full bg-neutral-50"

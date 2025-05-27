@@ -113,7 +113,6 @@ const RatingStars = ({ rating }: { rating: number }) => {
 };
 
 export const ContentFrameSection = () => {
- 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -128,16 +127,22 @@ export const ContentFrameSection = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Date formater
+  const date = new Date().toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+
   const handleSubmit = () => {
     if (!formData.name || !formData.email || !formData.comment) return;
-
     const newComment = {
       id: commentList.length + 1,
       name: formData.name,
       image: "/images/rectangle-2-copy-8-2.png", // Dummy image
       rating: 4.0, // Static rating
-      email:formData.email, //Email 
-      date: new Date().toLocaleDateString("en-GB"), // Date 
+      email: formData.email, //Email
+      date: date, // Dynamic date
       comment: formData.comment,
     };
 
@@ -354,7 +359,7 @@ export const ContentFrameSection = () => {
           </div>
         </div>
 
-         {/* Sidebar */}
+        {/* Sidebar */}
         <aside className="flex flex-col w-full lg:w-[341px] items-start gap-[100px] px-1 py-6">
           <div className="flex flex-col items-start gap-[100px] w-full">
             {/* Explore More Section */}
@@ -507,55 +512,49 @@ export const ContentFrameSection = () => {
             Add A Comment
           </h2>
         </div>
-
-        <div className="flex flex-col items-start gap-5 w-full">
-          <div className="flex flex-col md:flex-row items-start gap-[25px] w-full">
-            <div className="flex-1 flex flex-col items-start gap-5">
-              <div className="w-full">
-                <label className="font-medium text-[#3d3232] text-base tracking-[1.00px] mb-[34px] block">
-                  Name
-                </label>
-                {/* <Input className="h-12 bg-neutral-100 rounded-xl" /> */}
-                <Input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="h-12 bg-neutral-100 rounded-xl text-black  border-none focus:outline-none"
-                />
-              </div>
-              <div className="w-full">
-                <label className="font-medium text-[#3d3232] text-base tracking-[1.00px] mb-[34px] block">
-                  Email
-                </label>
-                {/* <Input className="h-12 bg-neutral-100 rounded-xl" /> */}
-
-                <Input
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="h-12 bg-neutral-100 rounded-xl text-black  border-none focus:outline-none"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col h-[184px] items-start gap-[15px] flex-1">
-              <label className="[font-family:'Lato',Helvetica] font-medium text-[#3d3232] text-base tracking-[1.00px]">
-                Comment
+        <div className="flex flex-col md:flex-row items-start gap-[25px] w-full">
+          <div className="flex flex-col gap-5 w-full md:flex-1">
+            <div className="w-full">
+              <label className="font-medium text-[#3d3232] text-base tracking-[1.00px] mb-[34px] block">
+                Name
               </label>
-              {/* <Textarea
-                className="flex-1 w-full bg-neutral-100 rounded-[10px] px-6 py-[22px]"
-                placeholder="Search Anything..."
-              /> */}
-              <Textarea
-                name="comment"
-                value={formData.comment}
+              <Input
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
-                className="flex-1 w-full bg-neutral-100 rounded-[10px] px-6 py-[22px] text-black  border-none focus:outline-none"
-                placeholder="Write your comment..."
+                className="w-full h-12 bg-neutral-100 rounded-xl text-black border border-transparent focus-visible:ring-0 focus:ring-0 focus:border-transparent focus:outline-none shadow-none"
+                placeholder="Write your Name"
+              />
+            </div>
+            <div className="w-full">
+              <label className="font-medium text-[#3d3232] text-base tracking-[1.00px] mb-[34px] block">
+                Email
+              </label>
+              <Input
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full h-12 bg-neutral-100 rounded-xl text-black border border-transparent focus-visible:ring-0 focus:ring-0 focus:border-transparent focus:outline-none shadow-none"
+                placeholder="Write your Email"
               />
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row items-start gap-[25px] w-full">
+          {/* Comment */}
+          <div className="w-full md:flex-1 flex flex-col gap-[32px]">
+            <label className="font-medium text-[#3d3232] text-base tracking-[1.00px]">
+              Comment
+            </label>
+            <Textarea
+              name="comment"
+              value={formData.comment}
+              onChange={handleChange}
+              className="w-full h-12 bg-neutral-100 rounded-xl text-black border border-transparent focus-visible:ring-0 focus:ring-0 focus:border-transparent focus:outline-none shadow-none"
+              placeholder="Write your comment..."
+            />
+          </div>
+        </div>
+      <div className="flex flex-col md:flex-row items-start gap-[25px] w-full">
             <div className="flex flex-col md:flex-row items-center justify-between pl-3.5 pr-1 py-1 flex-1 bg-neutral-100 rounded-xl">
               <div className="[font-family:'Lato',Helvetica] font-medium text-black text-base tracking-[1.00px] text-center md:text-left mb-4 md:mb-0">
                 Rate The Usefulness Of The Article
@@ -604,7 +603,6 @@ export const ContentFrameSection = () => {
               </span>
             </Button>
           </div>
-        </div>
       </div>
     </section>
   );
