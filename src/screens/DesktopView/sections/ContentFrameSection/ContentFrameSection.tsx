@@ -136,7 +136,8 @@ export const ContentFrameSection = () => {
       name: formData.name,
       image: "/images/rectangle-2-copy-8-2.png", // Dummy image
       rating: 4.0, // Static rating
-      date: new Date().toLocaleDateString("en-GB"), // e.g., 26/05/2025
+      email:formData.email, //Email 
+      date: new Date().toLocaleDateString("en-GB"), // Date 
       comment: formData.comment,
     };
 
@@ -145,7 +146,7 @@ export const ContentFrameSection = () => {
   };
 
   return (
-    <section className="flex flex-col items-center w-full px-4 md:px-0">
+    <section className="flex flex-col items-center w-full px-4 md:px-4">
       <div className="flex flex-col lg:flex-row w-full max-w-[1200px] items-start gap-5">
         {/* Main Content */}
         <div className="flex flex-col items-center justify-center gap-8 pb-16 flex-1">
@@ -354,7 +355,7 @@ export const ContentFrameSection = () => {
         </div>
 
          {/* Sidebar */}
-        <aside className="flex flex-col w-full lg:w-[341px] items-start gap-[100px] px-5 py-6">
+        <aside className="flex flex-col w-full lg:w-[341px] items-start gap-[100px] px-1 py-6">
           <div className="flex flex-col items-start gap-[100px] w-full">
             {/* Explore More Section */}
             <div className="flex flex-col items-start gap-10 w-full">
@@ -592,7 +593,7 @@ export const ContentFrameSection = () => {
               </div>
             </div>
             <Button
-              className="w-[109px] h-12 bg-black rounded-xl flex items-center justify-center gap-2"
+              className="w-full md:w-[109px] h-12 bg-black rounded-xl flex items-center justify-center gap-2"
               onClick={handleSubmit}
             >
               <span className="w-4 h-4 flex items-center justify-center text-white text-sm">
